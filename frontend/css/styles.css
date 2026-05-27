@@ -1,0 +1,388 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #e07a5f;
+    --secondary: #f2b591;
+    --success: #10b981;
+    --warning: #fb923c;
+    --danger: #ef4444;
+    --dark: #3d2514;
+    --light: #faf3ed;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+    background-color: var(--dark);
+    color: #431407;
+}
+
+/* Cards and Containers */
+.stat-card {
+    @apply bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-slate-700 hover:shadow-xl transition-all duration-300 hover:border-orange-500/50;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Navigation */
+.nav-btn {
+    @apply text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-slate-700;
+}
+
+.nav-btn.active {
+    @apply bg-gradient-to-r from-orange-500 to-amber-500 text-white;
+}
+
+/* Tab Styling */
+.tab-btn {
+    @apply transition-all duration-300;
+}
+
+.tab-btn.active {
+    @apply bg-gradient-to-r from-orange-500 to-amber-500 text-white;
+}
+
+/* Filter Buttons */
+.filter-btn {
+    @apply bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-600 transition-all;
+}
+
+.filter-btn.active {
+    @apply bg-gradient-to-r from-orange-500 to-amber-500 text-white;
+}
+
+/* Task Card */
+.task-card {
+    @apply bg-white dark:bg-slate-800 rounded-lg p-4 shadow-md border-l-4 hover:shadow-lg transition-all duration-300 cursor-move;
+}
+
+.task-card.high-priority {
+    @apply border-l-red-500;
+}
+
+.task-card.medium-priority {
+    @apply border-l-yellow-500;
+}
+
+.task-card.low-priority {
+    @apply border-l-green-500;
+}
+
+.task-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Kanban Column */
+.kanban-column {
+    @apply bg-gray-100 dark:bg-slate-700/50 rounded-lg p-4 min-h-[500px];
+}
+
+.tasks-container {
+    @apply space-y-3;
+}
+
+/* Progress Bar */
+.progress-bar {
+    @apply h-2 bg-gray-200 dark:bg-slate-700 rounded-full overflow-hidden;
+}
+
+.progress-fill {
+    @apply h-full bg-gradient-to-r from-orange-500 to-amber-500 transition-all duration-500;
+}
+
+/* Badge */
+.badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+}
+
+.badge-high {
+    @apply bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400;
+}
+
+.badge-medium {
+    @apply bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400;
+}
+
+.badge-low {
+    @apply bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in {
+    animation: slideIn 0.3s ease;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.dark::-webkit-scrollbar-thumb {
+    background: #64748b;
+}
+
+.dark::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Glassmorphism */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Button Hover Effects */
+button:not(:disabled) {
+    @apply transition-all duration-300 transform hover:scale-105 active:scale-95;
+}
+
+/* Input Focus */
+input:focus,
+textarea:focus,
+select:focus {
+    @apply outline-none ring-2 ring-orange-500;
+}
+
+/* Loading Spinner */
+.spinner {
+    @apply inline-block animate-spin;
+}
+
+/* Alert Messages */
+.alert {
+    @apply p-4 rounded-lg font-semibold;
+}
+
+.alert-success {
+    @apply bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-700;
+}
+
+.alert-error {
+    @apply bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-700;
+}
+
+.alert-warning {
+    @apply bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 border border-yellow-200 dark:border-yellow-700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .kanban-column {
+        min-h-[300px];
+    }
+
+    .grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Dark Mode Transitions */
+html.dark {
+    color-scheme: light;
+}
+
+/* Custom Scrollable Container */
+.scrollable {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+/* ==========================================
+   ✨ PREMIUM WHITE & WARM PEACH-BROWN MODE
+   ========================================== */
+
+/* Overriding class-based dark mode colors with a high-end Peach & Espresso Brown palette */
+html.dark body {
+    background: linear-gradient(135deg, #faf3ed 0%, #f5ebe0 100%) !important;
+    color: #3d2514 !important;
+    /* Deep espresso text */
+}
+
+/* Sidebar and Header */
+html.dark aside,
+html.dark .bg-white.dark\:bg-slate-800 {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-right: 1px solid #e8d8c8 !important;
+    /* soft peach border */
+    backdrop-filter: blur(10px);
+}
+
+html.dark .bg-white.dark\:bg-slate-800.border-b {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-bottom: 1px solid #e8d8c8 !important;
+}
+
+/* Stat Cards & Task Cards */
+html.dark .stat-card,
+html.dark .task-card {
+    background-color: #ffffff !important;
+    border-color: #fdf0e6 !important;
+    box-shadow: 0 4px 6px -1px rgba(224, 122, 95, 0.08), 0 2px 4px -1px rgba(224, 122, 95, 0.04) !important;
+}
+
+html.dark .stat-card:hover,
+html.dark .task-card:hover {
+    border-color: #e07a5f !important;
+    box-shadow: 0 10px 15px -3px rgba(224, 122, 95, 0.12), 0 4px 6px -2px rgba(224, 122, 95, 0.06) !important;
+}
+
+/* Kanban Columns */
+html.dark .kanban-column {
+    background-color: rgba(253, 240, 230, 0.8) !important;
+    border: 1px solid #fdf0e6 !important;
+}
+
+html.dark .kanban-column h3 {
+    color: #8d5b4c !important;
+}
+
+/* Navigation & Filter Buttons */
+html.dark .nav-btn,
+html.dark .filter-btn {
+    color: #e07a5f !important;
+}
+
+html.dark .nav-btn:hover,
+html.dark .filter-btn:hover {
+    background-color: #fdf0e6 !important;
+}
+
+html.dark .nav-btn.active,
+html.dark .filter-btn.active {
+    background: linear-gradient(135deg, #e07a5f, #f2b591) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+}
+
+/* Text Colors */
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark #pageTitle,
+html.dark #userName,
+html.dark .dark\:text-white,
+html.dark label {
+    color: #3d2514 !important;
+}
+
+html.dark p,
+html.dark span,
+html.dark .dark\:text-gray-300,
+html.dark .dark\:text-gray-400 {
+    color: #6f4e37 !important;
+    /* warm coffee text */
+}
+
+/* Inputs, Textareas, and Select Fields */
+html.dark input,
+html.dark textarea,
+html.dark select {
+    background-color: #ffffff !important;
+    border-color: #e8d8c8 !important;
+    color: #3d2514 !important;
+}
+
+html.dark input::placeholder {
+    color: #a98467 !important;
+}
+
+html.dark input:focus,
+html.dark textarea:focus,
+html.dark select:focus {
+    border-color: #e07a5f !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(224, 122, 95, 0.2) !important;
+}
+
+/* Modals */
+html.dark #newTaskModal>div,
+html.dark #editTaskModal>div {
+    background-color: #ffffff !important;
+    border: 2px solid #e8d8c8 !important;
+}
+
+/* Calendar Section and Other Backgrounds */
+html.dark #calendarSection .bg-white {
+    background-color: #ffffff !important;
+    border: 1px solid #e8d8c8 !important;
+}
+
+/* Theme Toggle Custom Background */
+html.dark .bg-gray-100.dark\:bg-slate-700 {
+    background-color: #faf3ed !important;
+    border: 1px solid #fdf0e6 !important;
+}
+
+/* Badges override */
+html.dark .bg-blue-100 {
+    background-color: #faf3ed !important;
+    color: #e07a5f !important;
+}
+
+html.dark .badge-high {
+    background-color: #fee2e2 !important;
+    color: #ef4444 !important;
+}
+
+html.dark .badge-medium {
+    background-color: #fef3c7 !important;
+    color: #d97706 !important;
+}
+
+html.dark .badge-low {
+    background-color: #dcfce7 !important;
+    color: #16a34a !important;
+}
